@@ -1,0 +1,240 @@
+.banner {
+  color: #f3f1f2;
+  background-color: #0b0203;
+  position: relative;
+}
+
+.banner a {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.banner h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0px;
+  padding: 10px;
+}
+
+.banner .label-container {
+  opacity: 0.8;
+}
+
+/*
+ * background-image: url\(\"(?<name>.*)-(?<size>small|medium|large)(?<lang>\.en)?(?<dpi>)?(?<ext>.*)\?(?<cacheBust>.*)\"\);
+
+ FIND-(?<size>small|medium|large)(?<lang>\.en)?(?<dpi>)?(?<ext>.*)\?(?<cacheBust>\w*)
+ REPLACE-$<size>$<lang>$<dpi>$<ext>?$<cacheBust>
+ */
+
+/****************************
+ *         new-logo
+ ***************************/
+
+/* Small */
+.banner.hero-1 {
+  background-image: url("/img/hero-1-small.jpg");
+  background-color: #fefaf9;
+}
+.banner.hero-1.en {
+  background-image: url("/img/hero-1-small.en.jpg");
+}
+
+.banner.hero-2 {
+  background-image: url("/img/hero-2-small.jpg");
+  background-color: #fefaf9;
+}
+.banner.hero-2.en {
+  background-image: url("/img/hero-2-small.en.jpg");
+}
+
+.banner.hero-3 {
+  background-image: url("/img/hero-3-small.jpg");
+  background-color: #f9f9f9;
+}
+.banner.hero-3.en {
+  background-image: url("/img/hero-3-small.en.jpg");
+}
+
+.banner.hero-4 {
+  background-image: url("/img/hero-4-small.jpg");
+  background-color: #fefaf9;
+}
+.banner.hero-4.en {
+  background-image: url("/img/hero-4-small.en.jpg");
+}
+
+/* Small, HiDPI */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+  .banner.hero-1 {
+    background-image: url("/img/hero-1-small.jpg");
+  }
+  .banner.hero-1.en {
+    background-image: url("/img/hero-1-small.en.jpg");
+  }
+
+  .banner.hero-2 {
+    background-image: url("/img/hero-2-small.jpg");
+  }
+  .banner.hero-2.en {
+    background-image: url("/img/hero-2-small.en.jpg");
+  }
+
+  .banner.hero-3 {
+    background-image: url("/img/hero-3-small.jpg");
+  }
+  .banner.hero-3.en {
+    background-image: url("/img/hero-3-small.en.jpg");
+  }
+
+  .banner.hero-4 {
+    background-image: url("/img/hero-4-small.jpg");
+  }
+  .banner.hero-4.en {
+    background-image: url("/img/hero-4-small.en.jpg");
+  }
+}
+
+/* Medium */
+@media screen and (min-width: 768px) {
+  .banner.hero-1 {
+    background-image: url("/img/hero-1-medium.jpg");
+  }
+  .banner.hero-1.en {
+    background-image: url("/img/hero-1-medium.en.jpg");
+  }
+
+  .banner.hero-2 {
+    background-image: url("/img/hero-2-medium.jpg");
+  }
+  .banner.hero-2.en {
+    background-image: url("/img/hero-2-medium.en.jpg");
+  }
+
+  .banner.hero-3 {
+    background-image: url("/img/hero-3-medium.jpg");
+  }
+  .banner.hero-3.en {
+    background-image: url("/img/hero-3-medium.en.jpg");
+  }
+
+  .banner.hero-4 {
+    background-image: url("/img/hero-4-medium.jpg");
+  }
+  .banner.hero-4.en {
+    background-image: url("/img/hero-4-medium.en.jpg");
+  }
+}
+
+/* Medium, HiDPI */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 768px),
+  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 768px),
+  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 768px),
+  only screen and (min-device-pixel-ratio: 2) and (min-width: 768px),
+  only screen and (min-resolution: 192dpi) and (min-width: 768px),
+  only screen and (min-resolution: 2dppx) and (min-width: 768px) {
+  .banner.hero-1 {
+    background-image: url("/img/hero-1-medium.jpg");
+  }
+  .banner.hero-1.en {
+    background-image: url("/img/hero-1-medium.en.jpg");
+  }
+
+  .banner.hero-2 {
+    background-image: url("/img/hero-2-medium.jpg");
+  }
+  .banner.hero-2.en {
+    background-image: url("/img/hero-2-medium.en.jpg");
+  }
+
+  .banner.hero-3 {
+    background-image: url("/img/hero-3-medium.jpg");
+  }
+  .banner.hero-3.en {
+    background-image: url("/img/hero-3-medium.en.jpg");
+  }
+
+  .banner.hero-4 {
+    background-image: url("/img/hero-4-medium.jpg");
+  }
+  .banner.hero-4.en {
+    background-image: url("/img/hero-4-medium.en.jpg");
+  }
+}
+
+/* Large */
+@media screen and (min-width: 900px) {
+  .banner.hero-1 {
+    background-image: url("/img/hero-1-large.jpg");
+  }
+  .banner.hero-1.en {
+    background-image: url("/img/hero-1-large.en.jpg");
+  }
+
+  .banner.hero-2 {
+    background-image: url("/img/hero-2-large.jpg");
+  }
+  .banner.hero-2.en {
+    background-image: url("/img/hero-2-large.en.jpg");
+  }
+
+  .banner.hero-3 {
+    background-image: url("/img/hero-3-large.jpg");
+  }
+  .banner.hero-3.en {
+    background-image: url("/img/hero-3-large.en.jpg");
+  }
+
+  .banner.hero-4 {
+    background-image: url("/img/hero-4-large.jpg");
+  }
+  .banner.hero-4.en {
+    background-image: url("/img/hero-4-large.en.jpg");
+  }
+}
+
+/* Large, HiDPI */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 900px),
+  only screen and (min--moz-device-pixel-ratio: 2) and (min-width: 900px),
+  only screen and (-o-min-device-pixel-ratio: 2/1) and (min-width: 900px),
+  only screen and (min-device-pixel-ratio: 2) and (min-width: 900px),
+  only screen and (min-resolution: 192dpi) and (min-width: 900px),
+  only screen and (min-resolution: 2dppx) and (min-width: 900px) {
+  .banner.hero-1 {
+    background-image: url("/img/hero-1-large.jpg");
+  }
+  .banner.hero-1.en {
+    background-image: url("/img/hero-1-large.en.jpg");
+  }
+
+  .banner.hero-2 {
+    background-image: url("/img/hero-2-large.jpg");
+  }
+  .banner.hero-2.en {
+    background-image: url("/img/hero-2-large.en.jpg");
+  }
+
+  .banner.hero-3 {
+    background-image: url("/img/hero-3-large.jpg");
+  }
+  .banner.hero-3.en {
+    background-image: url("/img/hero-3-large.en.jpg");
+  }
+
+  .banner.hero-4 {
+    background-image: url("/img/hero-4-large.jpg");
+  }
+  .banner.hero-4.en {
+    background-image: url("/img/hero-4-large.en.jpg");
+  }
+}
+
+/* HERO NEW LOGO END */

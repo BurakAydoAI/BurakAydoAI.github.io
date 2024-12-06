@@ -1,0 +1,37 @@
+---
+import { defaultLang } from "../i18n/utils.ts";
+import { getCollection } from "astro:content";
+import CategoryLayout from "../layouts/CategoryLayout.astro";
+import ProductLayout from "../layouts/ProductLayout.astro";
+
+export async function getStaticPaths() {
+  const allEntries = await getCollection(defaultLang);
+  return allEntries.map((entry) => ({
+    params: {
+      categories: entry.slug,
+    },
+    props: {
+      entry,
+    },
+  }));
+}
+
+type GetStaticPathsReturn = Awaited<ReturnType<typeof getStaticPaths>>;
+export type CategoryPath = GetStaticPathsReturn[number]["props"]["entry"];
+
+const { entry } = Astro.props;
+const layout = entry.data.layout;
+---
+
+{
+  // Automation/Lighting Categories
+  layout === "layouts/CategoryLayout.astro" && (
+    <CategoryLayout categoryData={entry} />
+  )
+}
+
+{
+  // Product categories layout
+  layout === undefined && <ProductLayout product={entry} />
+}
+
