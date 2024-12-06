@@ -27,14 +27,30 @@ jobs:
           node-version: 18.17.1
           package-manager: npm
 
-      - run: ls node_modules/.astro/assets
-      - run: echo ${{ hashFiles('**/*.avif') }}
+      - name: Calculate hash of AVIF files
+        id: avif-hash
+        run: |
+          echo "AVIF_HASH=$(find node_modules/.astro/assets -type f -name '*.avif' | xargs cat | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
+
       - name: Caching Images
+        id: cache
         uses: actions/cache@v4
         with:
-          path: |
-            node_modules/.astro/assets
-          key: ${{ runner.os }}-node-${{ hashFiles('**/*.avif') }}
+          path: node_modules/.astro/assets
+          key: ${{ runner.os }}-node-${{ env.AVIF_HASH }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Check Cache Hit
+        run: echo "Cache hit: ${{ steps.cache.outputs.cache-hit }}"
+
+      - name: Rebuild or Use Cache
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: echo "No cache hit, rebuilding assets..."
+
+      - name: Deploy to GitHub Pages
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: echo "Using cached assets to deploy..."
 
   deploy:
     needs: build
