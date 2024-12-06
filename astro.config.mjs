@@ -17,7 +17,7 @@ export default defineConfig({
       },
     },
   },
-
+  
   i18n: {
     defaultLocale: "tr",
     locales: ["tr", "en"],

@@ -27,13 +27,14 @@ jobs:
           node-version: 18.17.1
           package-manager: npm
 
+      - run: ls node_modules/.astro/assets
+      - run: echo ${{ hashFiles('**/*.avif') }}
       - name: Caching Images
         uses: actions/cache@v4
         with:
-          path: ./_astro
-          key: ${{ runner.os }}-astro-images-${{ hashFiles('_astro/**') }}
-          restore-keys: |
-            ${{ runner.os }}-astro-images-
+          path: |
+            node_modules/.astro/assets
+          key: ${{ runner.os }}-node-${{ hashFiles('**/*.avif') }}
 
   deploy:
     needs: build

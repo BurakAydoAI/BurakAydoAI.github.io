@@ -119,13 +119,8 @@ export type Product = z.infer<typeof productSchema>;
 
 // All combined
 const SchemeLayout = z.discriminatedUnion("layout", [
-  downloadSchema,
   cateogrySchema,
   productSchema,
-  blogSchema,
-  faqSchema,
-  cateogryIndexSchema,
-  obsoluteManualsSchema,
 ]);
 
 const categoryCollection = defineCollection({
