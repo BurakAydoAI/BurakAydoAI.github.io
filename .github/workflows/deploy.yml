@@ -26,10 +26,11 @@ jobs:
       #   with:
       #     node-version: 18.17.1
       #     package-manager: npm
-      
+
       - name: Node modules install
-        run: npm init -y
-        run: npm i
+        run: |
+          npm init -y 
+          npm i
       - name: Build
         run: npm run build
 
