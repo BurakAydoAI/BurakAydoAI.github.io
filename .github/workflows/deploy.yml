@@ -21,11 +21,17 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
 
-      - name: Install, build, and upload your site output
-        uses: withastro/action@v2
-        with:
-          node-version: 18.17.1
-          package-manager: npm
+      # - name: Install, build, and upload your site output
+      #   uses: withastro/action@v2
+      #   with:
+      #     node-version: 18.17.1
+      #     package-manager: npm
+      
+      - name: Node modules install
+        run: npm init -y
+        run: npm i
+      - name: Build
+        run: npm run build
 
       - name: Calculate hash of AVIF files
         id: avif-hash
