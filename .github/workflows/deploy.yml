@@ -21,51 +21,39 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
 
-      # - name: Install, build, and upload your site output
-      #   uses: withastro/action@v2
-      #   with:
-      #     node-version: 18.17.1
-      #     package-manager: npm
+      - name: Install, build, and upload your site output
+        uses: withastro/action@v2
+        with:
+          node-version: 18.17.1
+          package-manager: npm
 
-      - name: Node modules install
+      - name: Calculate hash of image files
+        id: image-hash
         run: |
-          npm init -y 
-          npm i
-      - name: Build
-        run: npm run build
+          echo "IMAGE_HASH=$(find node_modules/.astro/assets -type f -name '*.avif' | xargs cat | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
 
-      - name: Calculate hash of AVIF files
-        id: avif-hash
-        run: |
-          echo "AVIF_HASH=$(find node_modules/.astro/assets -type f -name '*.avif' | xargs cat | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
-
-      - name: Caching Images
-        id: cache
+      - name: Cache Images
         uses: actions/cache@v4
         with:
           path: node_modules/.astro/assets
-          key: ${{ runner.os }}-node-${{ env.AVIF_HASH }}
+          key: ${{ runner.os }}-images-${{ env.IMAGE_HASH }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-images-
 
       - name: Check Cache Hit
-        run: echo "Cache hit is ${{ steps.cache.outputs.cache-hit }}"
+        run: echo "Cache hit is ${{ steps.cache-images.outputs.cache-hit }}"
 
-      - name: Rebuild or Use Cache
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: echo "No cache hit, rebuilding assets..."
+      - name: Use Cached Images
+        if: steps.cache-images.outputs.cache-hit == 'true'
+        run: echo "Using cached images for deployment"
 
-      - name: Deploy to GitHub Pages
-        if: steps.cache.outputs.cache-hit == 'true'
-        run: echo "Using cached assets to deploy..."
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4
