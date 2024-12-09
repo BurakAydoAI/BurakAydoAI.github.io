@@ -21,27 +21,13 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
 
-      - name: Calculate hash of image files
-        id: image-hash
-        run: |
-          echo "IMAGE_HASH=$(find node_modules/.astro/assets -type f -name '*.avif' | xargs cat | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
-
       - name: Cache Images
         uses: actions/cache@v4
         with:
           path: node_modules/.astro/assets
-          key: ${{ runner.os }}-images-${{ env.IMAGE_HASH }}
+          key: ${{ runner.os }}-images-${{ hashFiles('node_modules/.astro/assets') }}
           restore-keys: |
-            ${{ runner.os }}-images-
-
-      - name: Check Cache Hit
-        run: |
-          echo "Cache hit is ${{ steps.cache-images.outputs.cache-hit }}"
-          if [ "${{ steps.cache-images.outputs.cache-hit }}" != 'true' ]; then
-            echo "Cache miss, need to rebuild assets..."
-          else
-            echo "Cache hit, using cached assets..."
-          fi
+            ${{ runner.os }}-images
 
       - name: Install, build, and upload your site output
         if: steps.cache-images.outputs.cache-hit != 'true'
@@ -49,11 +35,6 @@ jobs:
         with:
           node-version: 18.17.1
           package-manager: npm
-
-      - name: Cache is loaded ?
-        run: |
-          cd node_modules/.astro/assets
-          ls
 
   # deploy:
   #   needs: build
