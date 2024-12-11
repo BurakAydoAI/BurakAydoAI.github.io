@@ -30,7 +30,6 @@ jobs:
             ${{ runner.os }}-images
 
       - name: Install, build, and upload your site output
-        if: steps.cache-images.outputs.cache-hit != 'true'
         uses: withastro/action@v2
         with:
           node-version: 18.17.1
