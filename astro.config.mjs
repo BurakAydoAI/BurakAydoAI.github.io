@@ -3,7 +3,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://burakaydo.github.io",
+  // site: "https://burakaydo.github.io",
   vite: {
     build: {
       chunkSizeWarningLimit: 1000,
