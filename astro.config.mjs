@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 // import content from "@astrojs/content";
-
+// test
 // https://astro.build/config
 export default defineConfig({
   // site: "https://BurakAydoAI.github.io",
