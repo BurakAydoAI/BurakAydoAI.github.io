@@ -4,7 +4,7 @@ import { defineConfig } from "astro/config";
 // test
 // https://astro.build/config
 export default defineConfig({
-  site: "https://BurakAydoAI.github.io",
+  // site: "https://BurakAydoAI.github.io",
   base: "/pr-preview/pr-5/",
   vite: {
     build: {
