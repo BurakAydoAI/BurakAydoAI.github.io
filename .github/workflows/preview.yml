@@ -38,7 +38,8 @@ jobs:
         with:
           node-version: 18.17.1
           package-manager: npm
+          
       - name: Deploy PR Preview
         uses: rossjrw/pr-preview-action@v1.4.8
-        with:
-          umbrella-dir: .
+
+
