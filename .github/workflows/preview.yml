@@ -41,5 +41,3 @@ jobs:
 
       - name: Deploy PR Preview
         uses: rossjrw/pr-preview-action@v1.4.8
-        with:
-          source-dir: dist
